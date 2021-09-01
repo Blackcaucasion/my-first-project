@@ -1,0 +1,21 @@
+<div class="card text-center" style="
+margin-top: 1rem;
+">
+    <div class="card-header">
+        Users Profile
+    </div>
+</div>
+<br>
+<div class="card employees">
+    <div class="card-header" *ngFor="let employee  of dataservice.employees | async">
+        <div class="row">
+            <div class="col-md-12 col-md-6 col-md-offset-3">
+                <span class="badge"></span>{{employee.uid}}
+                <span class="spacer"></span>
+                <a routerLink="/profile/{{employee.uid}}"><button type="button" class="btn btn-outline-info" style="
+                float: right;
+            ">edit</button></a>
+            </div>
+        </div>
+    </div>
+</div>

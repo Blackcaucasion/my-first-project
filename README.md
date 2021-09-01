@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start-pwa` for a dev server. Navigate to ` http://127.0.0.1:8080`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -12,9 +12,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build --optimization=false` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Running unit testsng build --optimization=false
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 

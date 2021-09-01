@@ -1,0 +1,81 @@
+<div class="card text-center" style="
+margin-top: 1rem;
+">
+    <div class="card-header ">
+        Profile
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-md-offset-3">
+
+                    <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+                        <div class="image-avater"  style="width: 100;height: auto;">
+                            <img class="rounded-circle" alt="100x100"
+                                src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+                                data-holder-rendered="true" alt="profile picture">
+                        </div>
+                        <div class="form-group">
+                            <label for="first-name">*First Name: </label>
+                            <input id="first-name" type="text" [formControl]="firstName" class="form-control">
+                            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert">
+                                <div *ngIf="firstName.errors?.required">
+                                    first name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">*Last Name: </label>
+                            <input id="last-name" type="text" [formControl]="lastName" class="form-control">
+                            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert">
+                                <div *ngIf="lastName.errors?.required">
+                                    first name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">*emailAddress: </label>
+                            <input id="emailAddress" type="text" [formControl]="emailAddress" class="form-control">
+                            <div *ngIf="emailAddress.invalid && (lastName.dirty || emailAddress.touched)" class="alert">
+                                <div *ngIf="emailAddress.errors?.required">
+                                    first name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeNumber">*employeeNumber: </label>
+                            <input id="employeeNumber" type="text" [formControl]="employeeNumber" class="form-control">
+                            <div *ngIf="employeeNumber.invalid && (employeeNumber.dirty || employeeNumber.touched)" class="alert">
+                                <div *ngIf="employeeNumber.errors?.required">
+                                    employeeNumber is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">role: </label>
+                            <select class="form-select" [formControl]="role">
+                                <option value="" disabled>Select Role</option>
+                                <option *ngFor="let role of Roles" [ngValue]="role" (change)="switchRole($event)">
+                                    {{role}}</option>
+                            </select>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="department">department: </label>
+                            <input id="department" type="text" [formControl]="department" class="form-control">
+                            <div *ngIf="department.invalid && (department.dirty || department.touched)" class="alert">
+                                <div *ngIf="department.errors?.required">
+                                    first name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" [disabled]="!profileForm.valid" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
