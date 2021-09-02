@@ -6,26 +6,23 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule } from "@angular/fire";
-import{ AngularFirestoreModule } from '@angular/fire/firestore';
-import{ AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NavBarModule } from './nav-bar/nav-bar.module';
-
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     NavBarModule,
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -34,8 +31,8 @@ import { NavBarModule } from './nav-bar/nav-bar.module';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     AppRoutingModule,
-    RouterModule  ,
-      
+    RouterModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

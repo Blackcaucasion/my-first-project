@@ -1,33 +1,21 @@
 <mat-toolbar>
     <mat-toolbar-row>
         <div>
-            <a routerLink="/my-profile" style="
-            font-size: initial; color: #96b6e6;
-        "> my-profile </a>
-            <a mat-button routerLink="/employees" style="
-            font-size: initial;
-            margin-left: 12px;
-            color: #96b6e6;
-        "> employees</a>
-            <a mat-button routerLink="/login" style="
-            position: absolute;
-            right: 20%;
-            display: inline-grid;
-            top: 1px;
-            font-size: initial;
-            color: #96b6e6;
-        "> login
-                <mat-icon>login</mat-icon> </a>
-            <a mat-button routerLink="/sign-up" style="
-            position: absolute;
-            right: 5%;
-            display: inline-grid;
-            top: 1px;
-            font-size: initial;
-            color: #96b6e6;
-        "> sign-up <mat-icon>person_add_alt</mat-icon> </a>
-
-
+            <a id="my-profile" routerLink="/my-profile"> my-profile </a>
+            <a id="employees" mat-button routerLink="/employees"> employees</a>
+<!-- need own component -->
+            <ng-container *ngIf="isLoggedIn else notLoggedIn">
+                <a id="login" mat-button (click)="signOut()"> logOut
+                    <mat-icon>login</mat-icon> </a>
+            </ng-container>
+            <ng-template #notLoggedIn>
+                <a id="login" mat-button routerLink="/login"> login
+                    <mat-icon>login</mat-icon> </a>
+            </ng-template>
+            <ng-container *ngIf="!isLoggedIn">
+                <a id="sign-up" mat-button routerLink="/sign-up"> sign-up <mat-icon>person_add_alt</mat-icon> </a>
+            </ng-container>
+            <!--  -->
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

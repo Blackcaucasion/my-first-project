@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './shared/gaurds/auth.service';
-import { AdminGaurd } from './shared/gaurds/admin.service';
-import { ManagerGaurd } from './shared/gaurds/manager.service';
+import { AurthGuard } from './shared/gaurds/aurth.guard';
+import { AdminGuard } from './shared/gaurds/admin.guard';
+import { ManagerGuard } from './shared/gaurds/manager.guard';
 const routes: Routes = [
   {
     path: 'login',
@@ -18,18 +18,18 @@ const routes: Routes = [
   {
     path: 'my-profile',
     loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
-    canActivate: [AuthGuard]
+    canActivate: [AurthGuard]
 
   },
   {
     path: 'employees',
     loadChildren: () => import('./employees/employees.module').then(m => m.EmployeesModule),
-    canActivate: [AuthGuard, AdminGaurd]
+    canActivate: [AdminGuard]
   },
   {
     path: 'profile/:id',
     loadChildren: () => import('./users-profile/users-profile.module').then(m => m.UsersProfileModule),
-    // canActivate: [AuthGuard, ManagerGaurd]
+    canActivate: [ManagerGuard]
 
   }
 ];
@@ -39,6 +39,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     CommonModule
-  ]
+  ],
+  providers: [AurthGuard, AdminGuard, ManagerGuard]
 })
 export class AppRoutingModule { }

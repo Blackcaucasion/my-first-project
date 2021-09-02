@@ -39,7 +39,7 @@ export class UsersProfileComponent implements OnInit {
 
  public ngOnInit(): void {
   this.route.paramMap.subscribe(params => {
-    console.log(params)
+    // console.log(params)
     const paramKey = params.get('id') as string
     this.getUser(paramKey)
   })
@@ -51,6 +51,8 @@ export class UsersProfileComponent implements OnInit {
       (vals) => {
 
         this.employee = vals.payload.data() as Employee
+            console.log(this.employee)
+
         this.profileForm.patchValue({
           emailAddress: this.employee?.personalDetails?.email,
           firstName: this.employee?.personalDetails?.firstName,
@@ -75,7 +77,9 @@ export class UsersProfileComponent implements OnInit {
         employeeNumber:this.employeeNumber.value,
         department:this.department.value,
         role:this.role.value
-    }})
+    }
+
+  })
  
     }
       // Choose role

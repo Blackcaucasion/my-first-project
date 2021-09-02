@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Employee } from '../models/employee';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { BehaviorSubject } from 'rxjs';
 import { DataService } from './data.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';

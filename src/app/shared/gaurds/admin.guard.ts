@@ -1,36 +1,32 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { AuthService as Authorise, AuthService } from '../services/auth.service';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { QueryService } from '../services/query.service';
-import { Employee } from '../models/employee';
+import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Employee } from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGaurd implements CanActivate {
-
+export class AdminGuard implements CanActivate {
   constructor(
     private readonly queryservice: QueryService,
     public router: Router,
-    public auth:Authorise,
     private readonly authservice: AuthService,
     public toastr: ToastrService,
 
 
     
     ) {
-        this.auth.isLoggedIn();
      }
-
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean{
-    var isAuthenticated = false;
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      var isAuthenticated :boolean= true;
     this.authservice.isLoggedIn().subscribe((val)=>{
-        // console.log(val)
+        console.log(val)
         this.queryservice.getEmployee(val?.uid).subscribe((res)=>{
             const user = res.payload.data() as Employee
             const role =user?.personalDetails?.role
@@ -44,13 +40,12 @@ export class AdminGaurd implements CanActivate {
                 // console.log("not authorised")
                 this.toastr.warning('Only admin user allowed !');
 
-                this.router.navigate([''])
+                // this.router.navigate([''])
             }
         })
     })
-
+console.log()
 return isAuthenticated;
-
   }
+  
 }
- 

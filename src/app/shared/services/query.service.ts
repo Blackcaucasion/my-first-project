@@ -35,6 +35,7 @@ export class QueryService {
   }
 
   public async updateEmployee(employee:Employee){
+    console.log(employee.personalDetails +"hrerere");
 
     return  await this.angularfirestore.doc('employees/' + employee.uid).update(employee).catch((err)=>{
       this.toastr.error(err.message)

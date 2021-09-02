@@ -1,0 +1,24 @@
+#my-profile{
+    font-size: initial; color: #96b6e6;
+}
+#employees{
+    font-size: initial;
+    margin-left: 12px;
+    color: #96b6e6;
+}
+#login{
+    position: absolute;
+    right: 20%;
+    display: inline-grid;
+    top: 1px;
+    font-size: initial;
+    color: #96b6e6;
+}
+#sign-up{
+    position: absolute;
+    right: 5%;
+    display: inline-grid;
+    top: 1px;
+    font-size: initial;
+    color: #96b6e6;
+}
