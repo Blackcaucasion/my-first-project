@@ -6,6 +6,9 @@ import { AdminGuard } from './shared/gaurds/admin.guard';
 import { ManagerGuard } from './shared/gaurds/manager.guard';
 const routes: Routes = [
   {
+    path:'',redirectTo: 'login', data: { title: 'login' }, pathMatch: 'full'
+  },
+  {
     path: 'login',
 
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)

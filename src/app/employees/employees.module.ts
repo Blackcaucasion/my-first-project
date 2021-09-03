@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeesComponent } from './employees.component';
+import { NavBarModule } from '../nav-bar/nav-bar.module';
 
 
 @NgModule({
   declarations: [EmployeesComponent],
   imports: [
     CommonModule,
-    EmployeesRoutingModule
+    EmployeesRoutingModule,
+    NavBarModule
+
   ]
 })
 export class EmployeesModule { }

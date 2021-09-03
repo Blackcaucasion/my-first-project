@@ -1,21 +1,10 @@
 <mat-toolbar>
     <mat-toolbar-row>
         <div>
-            <a id="my-profile" routerLink="/my-profile"> my-profile </a>
-            <a id="employees" mat-button routerLink="/employees"> employees</a>
-<!-- need own component -->
-            <ng-container *ngIf="isLoggedIn else notLoggedIn">
-                <a id="login" mat-button (click)="signOut()"> logOut
-                    <mat-icon>login</mat-icon> </a>
-            </ng-container>
-            <ng-template #notLoggedIn>
-                <a id="login" mat-button routerLink="/login"> login
-                    <mat-icon>login</mat-icon> </a>
-            </ng-template>
-            <ng-container *ngIf="!isLoggedIn">
-                <a id="sign-up" mat-button routerLink="/sign-up"> sign-up <mat-icon>person_add_alt</mat-icon> </a>
-            </ng-container>
-            <!--  -->
+            <a id="my-profile" routerLink="/my-profile"> <mat-icon>perm_identity</mat-icon> my-profile </a>
+            <a id="employees" mat-button routerLink="/employees"> <mat-icon>people_alt</mat-icon> employees</a>
+            <a id="login" mat-button (click)="signOut()"> logOut
+                <mat-icon>login</mat-icon> </a>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

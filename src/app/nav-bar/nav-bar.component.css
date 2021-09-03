@@ -1,14 +1,16 @@
 #my-profile{
     font-size: initial; color: #96b6e6;
+    display: inline-grid;
 }
 #employees{
     font-size: initial;
     margin-left: 12px;
     color: #96b6e6;
+    display: inline-grid;
 }
 #login{
     position: absolute;
-    right: 20%;
+    right: 5%;
     display: inline-grid;
     top: 1px;
     font-size: initial;

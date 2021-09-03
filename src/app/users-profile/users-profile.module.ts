@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UsersProfileRoutingModule } from './users-profile-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UsersProfileComponent } from './users-profile.component';
+import { NavBarModule } from '../nav-bar/nav-bar.module';
 
 
 @NgModule({
@@ -12,7 +13,9 @@ import { UsersProfileComponent } from './users-profile.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    UsersProfileRoutingModule
+    UsersProfileRoutingModule,
+    NavBarModule,
+
   ]
 })
 export class UsersProfileModule { }
