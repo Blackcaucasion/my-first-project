@@ -19,24 +19,21 @@ export class QueryService {
     ) { }
 
   public getEmployeeList(){
+    this.employeeList =[];
  return this.angularfirestore.collection('employees').snapshotChanges()
  
  .subscribe((data)=>{
-   console.log(data)
    data.map( 
      res=>{
       const employeeValue= res.payload.doc.data() as Employee
-      // console.log(employeeValue);
       this.employeeList.push(employeeValue)
-      this.dataservice.setEmployees(this.employeeList as Employee[])
+      this.dataservice.setEmployees(this.employeeList)
     }
    )
  });
   }
 
   public async updateEmployee(employee:Employee){
-    console.log(employee.personalDetails +"hrerere");
-
     return  await this.angularfirestore.doc('employees/' + employee.uid).update(employee).catch((err)=>{
       this.toastr.error(err.message)
 

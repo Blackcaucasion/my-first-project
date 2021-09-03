@@ -16,8 +16,10 @@ export class EmployeesComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    // console.log("here")
+    console.log("here")
     this.queryservice.getEmployeeList();
+    this.dataservice.employees$.value
+    console.log(  this.dataservice.employees$.value);
   }
 
 }

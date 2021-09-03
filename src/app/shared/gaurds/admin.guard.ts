@@ -26,11 +26,11 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       var isAuthenticated :boolean= true;
     this.authservice.isLoggedIn().subscribe((val)=>{
-        console.log(val)
+        // console.log(val)
         this.queryservice.getEmployee(val?.uid).subscribe((res)=>{
             const user = res.payload.data() as Employee
             const role =user?.personalDetails?.role
-                    console.log(role)
+                    // console.log(role)
 
             if( role?.includes("admin") && role !==undefined){ 
                 isAuthenticated = true

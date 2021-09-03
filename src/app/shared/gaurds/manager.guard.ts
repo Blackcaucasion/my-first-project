@@ -23,11 +23,11 @@ export class ManagerGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       var isAuthenticated = false;
       this.authservice.isLoggedIn().subscribe((val)=>{
-        console.log(val)
+        // console.log(val)
         this.queryservice.getEmployee(val?.uid).subscribe((res)=>{
             const user = res.payload.data() as Employee
             const role =user?.personalDetails?.role
-                    console.log(role)
+                    // console.log(role)
 
             if( role?.includes("manager") && role !==undefined){ 
                 isAuthenticated = true
@@ -41,7 +41,7 @@ export class ManagerGuard implements CanActivate {
             }
         })
     })
-console.log()
+// console.log()
 return isAuthenticated;
   }
 }

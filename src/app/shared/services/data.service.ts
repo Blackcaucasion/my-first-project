@@ -25,6 +25,8 @@ export class DataService {
     return this.employees$;
   }
   public setEmployees(employee: Employee[]) {
+
+    // this.employees$.next([]);
     this.employees$.next(employee);
   }
 

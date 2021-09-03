@@ -32,7 +32,7 @@ export class AurthGuard implements CanActivate {
         if(!user?.uid){
           isAuthenticated = false;
           this.toastr.warning('need to log in !');
-          console.log("not authorised")
+          // console.log("not authorised")
           this.router.navigate(['/login'])
         }else{
           isAuthenticated =true

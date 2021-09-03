@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
     this.authservice.isLoggedIn().pipe(
       first()
     ).subscribe((user) => {
-      console.log(user+"jjjh")
+      // console.log(user+"jjjh")
       user ? this.isLoggedIn === true : this.isLoggedIn === false;
     })
   }

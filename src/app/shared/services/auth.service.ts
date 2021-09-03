@@ -65,7 +65,7 @@ export class AuthService {
   }
 
   public initCollection(res: any) {
-    console.log(res?.uid)
+    // console.log(res?.uid)
 
     const docRef: AngularFirestoreDocument<Employee> = this.angularfirestore.collection('employees').doc(`${res?.uid}`)
     docRef.ref.get().then((doc) => {
