@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
+import { SpinnerModule } from '../ui/spinner/spinner.module';
 
 
 
@@ -13,6 +14,7 @@ import { LoginComponent } from './login.component';
     ReactiveFormsModule,
     FormsModule,
     LoginRoutingModule,
+    SpinnerModule
   ]
 })
 export class LoginModule { }

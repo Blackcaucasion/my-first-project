@@ -4,6 +4,7 @@ import { AuthService } from '../shared/services/auth.service';
 import { Employee } from '../shared/models/employee';
 import { QueryService } from '../shared/services/query.service';
 import { DataService } from '../shared/services/data.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -27,6 +28,8 @@ export class ProfileComponent implements OnInit {
     department: this.department,
     role: this.role,
   })
+  public loading$: Observable<boolean>;
+
   public employee: Employee;
   // Roles
   Roles: any = ["admin", "manager"];
@@ -50,7 +53,6 @@ export class ProfileComponent implements OnInit {
         this.queryservice.getEmployee(val?.uid).subscribe(
           (vals: any) => {
 
-            // console.log(vals.payload.data())
             this.employee = vals.payload.data() as Employee
             this.profileForm.patchValue({
               emailAddress: this.employee?.personalDetails?.email,
@@ -77,6 +79,7 @@ export class ProfileComponent implements OnInit {
 
   //update profile
   public saveProfile() {
+    this.loading$ = of(true);
     this.queryservice.updateEmployee({
       uid: this.employee.uid,
       personalDetails: {
@@ -87,6 +90,8 @@ export class ProfileComponent implements OnInit {
         department: this.department.value,
         role: this.role.value
       }
+    }).then(()=>{
+      this.loading$ = of(false);
     })
   }
 

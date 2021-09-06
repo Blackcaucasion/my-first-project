@@ -5,6 +5,7 @@ import { SignupRoutingModule } from './signup-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SignupComponent } from './signup.component';
 import { NavBarModule } from '../nav-bar/nav-bar.module';
+import { SpinnerModule } from '../ui/spinner/spinner.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NavBarModule } from '../nav-bar/nav-bar.module';
     CommonModule,
     SignupRoutingModule,
     NavBarModule,
+    SpinnerModule
 
   ]
 })

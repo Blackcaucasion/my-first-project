@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
     email: this.email,
     password: this.password,
   });
+  public loading$: Observable<boolean>;
 
   constructor(
     public readonly authservice: AuthService,
@@ -22,10 +24,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    //  console.log("login")
   }
   public signIn() {
-    this.authservice.signIn(this.email.value, this.password.value)
+    this.loading$ = of(true);
+    this.authservice.signIn(this.email.value, this.password.value).then(()=>{
+      this.loading$ = of(false);
+    })
 
   }
 }

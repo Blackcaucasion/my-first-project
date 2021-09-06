@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -16,16 +17,20 @@ export class SignupComponent implements OnInit {
     email: this.email,
     password: this.password,
   });
+  public loading$: Observable<boolean>;
+
 
   constructor(
    public readonly authservice:AuthService
   ) { }
 
  public ngOnInit(): void {
-  //  console.log("signUP")
   }
   public signUp(){
-    this.authservice.signUp(this.email.value ,this.password.value);
+    this.loading$ = of(true);
+    this.authservice.signUp(this.email.value ,this.password.value).then(()=>{
+      this.loading$ = of(false);
+    })
 
   }
 

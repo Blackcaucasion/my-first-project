@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 node, angular cli
 ### Installing
 clone to local environmant 
-run npm i
+Run `npm i`
 
 ## Development server
 

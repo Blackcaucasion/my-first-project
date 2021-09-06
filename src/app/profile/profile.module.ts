@@ -4,6 +4,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavBarModule } from '../nav-bar/nav-bar.module';
+import { SpinnerModule } from '../ui/spinner/spinner.module';
 
 
 @NgModule({
@@ -14,6 +15,8 @@ import { NavBarModule } from '../nav-bar/nav-bar.module';
     FormsModule,
     ProfileRoutingModule,
     NavBarModule,
+    SpinnerModule
+
 
   ]
 })
