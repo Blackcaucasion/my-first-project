@@ -51,7 +51,7 @@ export class UsersProfileComponent implements OnInit {
       (vals) => {
 
         this.employee = vals.payload.data() as Employee
-            console.log(this.employee)
+            // console.log(this.employee)
 
         this.profileForm.patchValue({
           emailAddress: this.employee?.personalDetails?.email,

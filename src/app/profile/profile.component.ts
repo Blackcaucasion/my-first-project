@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     role: this.role,
   })
   public loading$: Observable<boolean>;
-
+  public use: any ;
   public employee: Employee;
   // Roles
   Roles: any = ["admin", "manager"];

@@ -49,12 +49,12 @@ export class QueryService {
  
   }
   //get profile of logged in user
-  public async getCurrentUser(){
+  public  getCurrentUser(){
     this.auth.isLoggedIn().subscribe((user)=>(
       this.getEmployee(user?.uid).subscribe((data:any)=>{
         const userVal= data.payload.data() as Employee
         this.dataservice.setCurrentUser(userVal);
-        console.log(userVal)
+        // console.log(userVal)
       })
     ))
   }

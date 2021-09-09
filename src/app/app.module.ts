@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NavBarModule } from './nav-bar/nav-bar.module';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,6 +23,7 @@ import { NavBarModule } from './nav-bar/nav-bar.module';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     NavBarModule,
+    AngularFireStorageModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ServiceWorkerModule.register('ngsw-worker.js', {

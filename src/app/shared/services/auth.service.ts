@@ -100,10 +100,5 @@ export class AuthService {
     return this.angufireauth.user;
   }
 
-  public getLoggedState() {
-    return this.angufireauth.authState.subscribe((user) => {
-      this.dataservice.setLoginState(user)
-    })
-  }
 
 }
