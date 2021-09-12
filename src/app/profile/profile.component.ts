@@ -1,10 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild, TemplateRef } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 import { Employee } from '../shared/models/employee';
 import { QueryService } from '../shared/services/query.service';
 import { DataService } from '../shared/services/data.service';
 import { Observable, of } from 'rxjs';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
+
 
 @Component({
   selector: 'app-profile',
@@ -33,15 +35,24 @@ export class ProfileComponent implements OnInit {
   public employee: Employee;
   // Roles
   Roles: any = ["admin", "manager"];
+  @ViewChild('profileBottomSheet') MatBottomSheetRef: TemplateRef<any>;
 
   constructor(
     private readonly authservice: AuthService,
     private readonly queryservice: QueryService,
     public dataservice: DataService,
-    private readonly changeDetectionRef: ChangeDetectorRef
+    private readonly changeDetectionRef: ChangeDetectorRef,
+    private bottomSheet: MatBottomSheet
 
   ) {
 
+  }
+  openTemplateSheetMenu() {
+    this.bottomSheet.open(this.MatBottomSheetRef);
+  }
+
+  closeTemplateSheetMenu() {
+    this.bottomSheet.dismiss();
   }
 
   public ngOnInit() {

@@ -1,6 +1,5 @@
-
 <app-nav-bar></app-nav-bar>
-<div class="card-text-center">
+<div class="card text-center">
     <div class="card-header ">
         My Profile
     </div>
@@ -15,6 +14,9 @@
                                 src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
                                 data-holder-rendered="true" alt="profile picture">
                         </div>
+                        <a (click)="openTemplateSheetMenu()" style="
+                        color: #4f62ea;
+                    ">Change Profile Photo</a>
                         <div class="form-group">
                             <label for="first-name">*First Name: </label>
                             <input id="first-name" type="text" [formControl]="firstName" class="form-control">
@@ -73,6 +75,13 @@
                         <br>
                         <button type="submit" [disabled]="!profileForm.valid" class="btn btn-primary">Submit</button>
                     </form>
+                    <ng-template let-bottomSheetRef="bottomSheetRef" #profileBottomSheet>
+                        <ul class="list-group">
+                            <li class="list-group-item">add photo</li>
+                            <li class="list-group-item">remove photo</li>
+                            <li class="list-group-item"><button class="btn btn-primary" (click)="closeTemplateSheetMenu()">close</button></li>
+                        </ul>
+                    </ng-template>
                 </div>
             </div>
         </div>

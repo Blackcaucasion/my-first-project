@@ -6,7 +6,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NavBarModule } from '../nav-bar/nav-bar.module';
 import { SpinnerModule } from '../ui/spinner/spinner.module';
 
-
 @NgModule({
   declarations: [ProfileComponent],
   imports: [
@@ -15,9 +14,8 @@ import { SpinnerModule } from '../ui/spinner/spinner.module';
     FormsModule,
     ProfileRoutingModule,
     NavBarModule,
-    SpinnerModule
-
-
+    SpinnerModule,
+    
   ]
 })
 export class ProfileModule { }
