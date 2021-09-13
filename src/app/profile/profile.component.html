@@ -77,9 +77,12 @@
                     </form>
                     <ng-template let-bottomSheetRef="bottomSheetRef" #profileBottomSheet>
                         <ul class="list-group">
-                            <li class="list-group-item">add photo</li>
+                            <li class="list-group-item">
+                                <input id="department" type="file" class="form-control" (change)="handleFiles($event)">add photo
+                            </li>
                             <li class="list-group-item">remove photo</li>
                             <li class="list-group-item"><button class="btn btn-primary" (click)="closeTemplateSheetMenu()">close</button></li>
+                            <li class="list-group-item"><button class="btn btn-primary" (click)="uploadFile()">Add</button></li>
                         </ul>
                     </ng-template>
                 </div>

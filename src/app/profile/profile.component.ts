@@ -6,6 +6,7 @@ import { QueryService } from '../shared/services/query.service';
 import { DataService } from '../shared/services/data.service';
 import { Observable, of } from 'rxjs';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import { UploadService } from '../shared/services/upload.service';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class ProfileComponent implements OnInit {
   public loading$: Observable<boolean>;
   public use: any ;
   public employee: Employee;
+  file: File;
+
   // Roles
   Roles: any = ["admin", "manager"];
   @ViewChild('profileBottomSheet') MatBottomSheetRef: TemplateRef<any>;
@@ -42,12 +45,27 @@ export class ProfileComponent implements OnInit {
     private readonly queryservice: QueryService,
     public dataservice: DataService,
     private readonly changeDetectionRef: ChangeDetectorRef,
-    private bottomSheet: MatBottomSheet
+    private bottomSheet: MatBottomSheet,
+    private readonly uploadserivce:UploadService
 
   ) {
 
   }
-  openTemplateSheetMenu() {
+  public handleFiles(event:any) {
+    this.file = event.target.files[0];
+  }
+  public async uploadFile(){
+    if(this.file){
+      this.loading$ = of(true);
+      (await this.uploadserivce.pushFileToStorage(this.file)).subscribe((res: any)=>{
+        console.log(res)
+        this.loading$ = of(false);
+        // need to save the url and to template
+      })
+    }
+  }
+
+ public openTemplateSheetMenu() {
     this.bottomSheet.open(this.MatBottomSheetRef);
   }
 
