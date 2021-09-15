@@ -11,8 +11,9 @@
                     <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
                         <div class="image-avater">
                             <img class="rounded-circle" style="width:auto;height:15vw;object-fit: cover;"
-                                src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-                                data-holder-rendered="true" alt="profile picture">
+                                [src]="profileURl?.value" data-holder-rendered="true" alt="profile picture">
+                            <input id="image" hidden type="text" [formControl]="profileURl">
+
                         </div>
                         <a (click)="openTemplateSheetMenu()" style="
                         color: #4f62ea;
@@ -78,11 +79,16 @@
                     <ng-template let-bottomSheetRef="bottomSheetRef" #profileBottomSheet>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <input id="department" type="file" class="form-control" (change)="handleFiles($event)">add photo
+                                <input id="department" type="file" class="form-control"
+                                    (change)="handleFiles($event)">add photo
                             </li>
                             <li class="list-group-item">remove photo</li>
-                            <li class="list-group-item"><button class="btn btn-primary" (click)="closeTemplateSheetMenu()">close</button></li>
-                            <li class="list-group-item"><button class="btn btn-primary" (click)="uploadFile()">Add</button></li>
+                            <li class="list-group-item"><button class="btn btn-primary"
+                                    (click)="closeTemplateSheetMenu()">close</button></li>
+                            <li class="list-group-item"><button class="btn btn-primary"
+                                    (click)="uploadFile()">Add</button>
+                                <app-spinner *ngIf="loading$ |async"></app-spinner>
+                            </li>
                         </ul>
                     </ng-template>
                 </div>

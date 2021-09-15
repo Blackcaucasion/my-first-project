@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   public lastName = new FormControl('', Validators.required);
   public emailAddress = new FormControl('', Validators.required);
   public employeeNumber = new FormControl('', Validators.required);
+  public profileURl = new FormControl ("");
   public department = new FormControl('');
   public role = new FormControl('');
 
@@ -30,12 +31,12 @@ export class ProfileComponent implements OnInit {
     employeeNumber: this.employeeNumber,
     department: this.department,
     role: this.role,
+    profileURl:this.profileURl 
   })
   public loading$: Observable<boolean>;
   public use: any ;
   public employee: Employee;
-  file: File;
-
+  public file: File;
   // Roles
   Roles: any = ["admin", "manager"];
   @ViewChild('profileBottomSheet') MatBottomSheetRef: TemplateRef<any>;
@@ -58,8 +59,9 @@ export class ProfileComponent implements OnInit {
     if(this.file){
       this.loading$ = of(true);
       (await this.uploadserivce.pushFileToStorage(this.file)).subscribe((res: any)=>{
-        console.log(res)
         this.loading$ = of(false);
+        this.profileURl.setValue(res) ;
+        this.changeDetectionRef.detectChanges();
         // need to save the url and to template
       })
     }
@@ -89,7 +91,9 @@ export class ProfileComponent implements OnInit {
               lastName: this.employee?.personalDetails?.lastName,
               employeeNumber: this.employee?.personalDetails?.employeeNumber,
               department: this.employee?.personalDetails?.department,
-              role: this.employee?.personalDetails?.role
+              role: this.employee?.personalDetails?.role,
+              profileURl:this.employee?.personalDetails?.profileUrl
+
             })
             this.changeDetectionRef.detectChanges();
           }
@@ -117,7 +121,8 @@ export class ProfileComponent implements OnInit {
         lastName: this.lastName.value,
         employeeNumber: this.employeeNumber.value,
         department: this.department.value,
-        role: this.role.value
+        role: this.role.value,
+        profileUrl :this.profileURl.value
       }
     }).then(()=>{
       this.loading$ = of(false);
