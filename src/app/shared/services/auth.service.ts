@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { DataService } from './data.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { QueryService } from './query.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,12 +46,14 @@ export class AuthService {
       // firebase custom setCustomUserClaims
       // check if user is new and initialice doc collection 
       this.initCollection(res.user as {})
-      this.toastr.success("successfully Logged!");
 
-
+    }).then(()=>{
+      this.toastr.success("successfully Logged!")
+      // this.queryservice.getCurrentUser()
       this.router.navigate(['my-profile']);
-
-    }).catch((err) => {
+    })
+    
+    .catch((err) => {
       this.toastr.error(err.message)
 
     }
@@ -65,12 +68,11 @@ export class AuthService {
   }
 
   public initCollection(res: any) {
-    // console.log(res?.uid)
 
     const docRef: AngularFirestoreDocument<Employee> = this.angularfirestore.collection('employees').doc(`${res?.uid}`)
     docRef.ref.get().then((doc) => {
       if (doc.exists) {
-        // console.log("not a new user")
+        // not a new user
       }
       else {
         // initialize doc 

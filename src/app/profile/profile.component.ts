@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
     profileURl:this.profileURl 
   })
   public loading$: Observable<boolean>;
-  public use: any ;
+  public msg: number ;
   public employee: Employee;
   public file: File;
   // Roles
@@ -85,6 +85,9 @@ export class ProfileComponent implements OnInit {
           (vals: any) => {
 
             this.employee = vals.payload.data() as Employee
+            this.queryservice.getMessages(this.employee).subscribe((msg)=>{
+             this.msg =msg.length
+            })
             this.profileForm.patchValue({
               emailAddress: this.employee?.personalDetails?.email,
               firstName: this.employee?.personalDetails?.firstName,
@@ -100,6 +103,7 @@ export class ProfileComponent implements OnInit {
         );
 
       })
+    
 
 
   }

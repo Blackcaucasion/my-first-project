@@ -36,7 +36,7 @@ export class AdminGuard implements CanActivate {
                 isAuthenticated = true
             }
             else{
-                isAuthenticated =false;
+                isAuthenticated = false;
                 // console.log("not authorised")
                 this.toastr.warning('Only admin user allowed !');
 

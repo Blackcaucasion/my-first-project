@@ -12,3 +12,7 @@ export interface personalDetails{
     role?:string |null;
     profileUrl?:string |null;
 }
+export interface msg {
+    from?:string |null,
+    msg?:string |null
+}

@@ -27,21 +27,10 @@ export class DataService {
   }
   public setEmployees(employee: Employee[]) {
 
-    // this.employees$.next([]);
+    this.employees$.next([]);
     this.employees$.next(employee);
   }
 
-
- public get CurrentUser(){
-   return this.myProfileUser$;
- }
-  public setCurrentUser(employ:any){
-    return this.myProfileUser$.next(employ);
-  }
-
-  public get LogInState(){
-    return this.User$;
-  }
   public setLoginState(user:any){
     return this.User$.next(user);
   }

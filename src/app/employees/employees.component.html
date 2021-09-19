@@ -1,20 +1,54 @@
 <app-nav-bar></app-nav-bar>
 <div class="card text-center">
-    <div class="card-header">
-        Users Profile
-    </div>
+  <div class="card-header">
+    Users Profile
+  </div>
 </div>
 <br>
-<div class="card employees">
-    <div class="card-header" *ngFor="let employee  of dataservice.employees | async">
-        <div class="row">
-            <div class="col-md-12 col-md-6 col-md-offset-3">
-                <span class="badge"></span>{{employee.uid}}
-                <span class="spacer"></span>
-                <a routerLink="/profile/{{employee.uid}}"><button type="button" class="btn btn-outline-info" style="
+<div class="card employees text-center">
+  <div class="card-header" *ngFor="let employee  of dataservice.employees | async">
+    <div class="row" *ngIf="employee?.personalDetails?.firstName">
+      <div class="col-md-6 col-md-offset-3">
+        <span class="badge"></span>{{employee?.personalDetails?.firstName}}
+        <!-- <div class="btn-group"> -->
+    <button  type="button" class="btn btn-outline-info" (click)="openPopup(employee,employee?.personalDetails?.firstName)"  >Message
+        </button>
+        <span class="spacer"></span>
+        <a routerLink="/profile/{{employee.uid}}"><button type="button" class="btn btn-outline-info" style="
                 float: right;
-            ">edit</button></a>
-            </div>
-        </div>
+            " value="Stop">edit</button></a>
+        <!-- </div> -->
+    
+      </div>
     </div>
+  </div>
+</div>
+<!-- model -->
+<div class="modal" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Message {{text}}</h4>
+      </div>
+      <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="Name">*Name: </label>
+          <br>
+          <input id="Name" type="text" [formControl]="name" class="form-control">
+          <label for="Name">*Message: </label>
+          <br>
+          <textarea class="form-control" rows="4" id="Message" [formControl]="message"></textarea>
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit"  class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </form>
+    </div>
+  </div>
 </div>
