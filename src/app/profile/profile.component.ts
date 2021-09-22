@@ -87,6 +87,8 @@ export class ProfileComponent implements OnInit {
             this.employee = vals.payload.data() as Employee
             this.queryservice.getMessages(this.employee).subscribe((msg)=>{
              this.msg = of(msg.length)
+             this.changeDetectionRef.detectChanges();
+
             })
             this.profileForm.patchValue({
               emailAddress: this.employee?.personalDetails?.email,
